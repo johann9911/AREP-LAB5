@@ -3,23 +3,25 @@ var apiClient = (function () {
 
   var getMessages = function () {
     $("#mensaj tbody").empty();
-    console.log(url);
     axios.get(url).then((res) => {
-      console.log(res);
       res.data.map((mensaje) =>
         $("#mensaj tbody").append(
           `<tr><td>${mensaje.description}</td>
 			<td>${mensaje.date}</td></tr>`
         )
       );
-    });
+    }).catch(error => {
+        console.log(error);
+      });
   };
 
   var addMessage = function (mensaje) {
     console.log("sdfsds");
     axios.post(url, mensaje).then((res) => {
       getMessages();
-    });
+    }).catch(error => {
+        console.log(error);
+      });
   };
 
   return {

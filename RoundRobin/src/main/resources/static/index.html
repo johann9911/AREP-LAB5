@@ -7,7 +7,7 @@
 	<script src="./js/codigo.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
-<body>
+<body onLoad="apiClient.getMessages()">
 
 
 <div class="logs">
@@ -18,11 +18,11 @@
 		<input type="text" id="mensaje">
 		<br>
 		<br>
-		<button id="boton_add" onClick="apiClient.addMessage(mensaje.value)">Añadir</button>
+		<button type="button" id="boton_add" onClick="apiClient.addMessage(mensaje.value)">Añadir</button>
 	</form>
 </div>
 
-<div onLoad="apiClient.getMessages()">
+<div>
 	<table class="mensajes" id="mensaj">
 		<thead>
 			<tr>

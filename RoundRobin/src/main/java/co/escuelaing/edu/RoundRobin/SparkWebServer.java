@@ -1,4 +1,4 @@
-package co.escuelaing.edu.arep;
+package co.escuelaing.edu.RoundRobin;
 
 
 import static spark.Spark.*;
@@ -12,13 +12,12 @@ public class SparkWebServer {
           staticFiles.location("/static");
           get("/", (req,res) -> {
         	  res.redirect("/index.html");
-        	  return "";
+        	  return null;
           });
           get("/logs", (req,res) -> {
         	  res.status(200);
               res.type("application/json");
-        	  Object r = server.getMessages();
-        	  return r;
+        	  return server.getMessages();
           });
           
           post("/logs", (req,res) -> {

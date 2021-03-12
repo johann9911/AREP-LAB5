@@ -1,4 +1,4 @@
-package co.escuelaing.edu.arep;
+package co.escuelaing.edu.RoundRobin;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -14,15 +14,17 @@ public class HttpServer {
 		HttpResponse<String> response = Unirest.post(urlSend)
 				      .body(message)
 				      .asString();
+		System.out.println("Petición POST de "+url+ports[numServer]);
 		//changeServer();
 		return response.getBody();
 	}
 	
 	public String getMessages() throws UnirestException {
 		String urlSend = url+ports[numServer]+"/message";
+		
 		HttpResponse<String> response = Unirest.get(urlSend)
 			      .asString();
-		System.out.println(response+"---");
+		System.out.println("Petición GET de "+url+ports[numServer]);
 		//changeServer();
 		return response.getBody();
 	}

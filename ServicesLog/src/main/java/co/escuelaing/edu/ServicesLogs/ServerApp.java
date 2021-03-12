@@ -15,12 +15,28 @@ public class ServerApp {
           ConnectionDBMongo connection = new ConnectionDBMongo();
           
           get("/message", (req,res) -> {
-        	  res.status(200);
-        	  res.type("application/json");
-        	  return new Gson().toJson(connection.getMessage());
+        	  Object result;
+        	  try {
+        		  res.status(200);
+            	  res.type("application/json");
+            	  result =new Gson().toJson(connection.getMessage());
+        	  } catch (Exception e) {
+                  res.status(500);
+                  result = e.getMessage();
+              }
+              return result;
           });
           post("/message", (req,res) -> {
-        	  return connection.addMenssage(req.body());
+        	  Object result;
+        	  try {
+        		  res.status(201);
+            	  res.type("application/json");
+            	  result = connection.addMenssage(req.body());
+        	  } catch (Exception e) {
+                  res.status(500);
+                  result = e.getMessage();
+        	  }
+        	  return result;
           });
     }
     

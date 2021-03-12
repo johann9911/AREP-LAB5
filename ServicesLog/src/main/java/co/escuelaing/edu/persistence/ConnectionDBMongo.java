@@ -19,11 +19,9 @@ import co.escuelaing.edu.model.Message;
 public class ConnectionDBMongo {
 	private MongoClient mongo;
 	public ConnectionDBMongo() throws UnknownHostException {
-		MongoClientURI uri = new MongoClientURI("mongodb://localhost:27017");
-        mongo = new MongoClient(uri);
+		mongo = new MongoClient("localhost",27017);
 	}
 	public String addMenssage(String bodyMessage) {
-		System.out.println("ehhhhhh");
 		MongoDatabase db = mongo.getDatabase("ServiceLog");
 		MongoCollection<Document> collection = db.getCollection("Message");
 		Document document = new Document();
@@ -40,10 +38,12 @@ public class ConnectionDBMongo {
 		List<Message> messages = new ArrayList<>();
 		MongoDatabase db = mongo.getDatabase("ServiceLog");
 		MongoCollection<Document> collection = db.getCollection("Message");
+		
 		FindIterable<Document> iterable = collection.find().sort(new BasicDBObject("date", -1)).limit(10);
+		
 		ArrayList<Document> docs = new ArrayList<>();
 		iterable.into(docs);
-		for (Document document : iterable) {
+		for (Document document : docs) {
 			description = (String) document.get("description");
             date = (Date) document.get("date");
             messages.add(new Message(description, date));
