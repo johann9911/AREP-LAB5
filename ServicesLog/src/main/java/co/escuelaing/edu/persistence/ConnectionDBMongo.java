@@ -10,6 +10,7 @@ import org.bson.Document;
 import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -17,9 +18,11 @@ import com.mongodb.client.MongoDatabase;
 import co.escuelaing.edu.model.Message;
 
 public class ConnectionDBMongo {
+	MongoClientURI uri;
 	private MongoClient mongo;
 	public ConnectionDBMongo() throws UnknownHostException {
-		mongo = new MongoClient("localhost",27017);
+		
+		mongo = new MongoClient("35.172.193.175",27017);
 	}
 	public String addMenssage(String bodyMessage) {
 		MongoDatabase db = mongo.getDatabase("ServiceLog");

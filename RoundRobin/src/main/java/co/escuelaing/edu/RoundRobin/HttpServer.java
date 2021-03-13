@@ -7,25 +7,27 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class HttpServer {
 	private String[] ports = { ":8001", ":8002", ":8003" };
 	private int numServer = 0;
-	private String url = "http://localhost";
+	private String url = "http://ec2-35-172-193-175.compute-1.amazonaws.com";
 
 	public String addMessage(String message) throws UnirestException {
+		System.out.println("Petición POST de "+url+ports[numServer]);
 		String urlSend = url+ports[numServer]+"/message";
 		HttpResponse<String> response = Unirest.post(urlSend)
 				      .body(message)
 				      .asString();
 		System.out.println("Petición POST de "+url+ports[numServer]);
-		//changeServer();
+		changeServer();
 		return response.getBody();
 	}
 	
 	public String getMessages() throws UnirestException {
-		String urlSend = url+ports[numServer]+"/message";
 		
+		String urlSend = url+ports[numServer]+"/message";
+		System.out.println("Petición GET de "+url+ports[numServer]+"/message");
 		HttpResponse<String> response = Unirest.get(urlSend)
 			      .asString();
 		System.out.println("Petición GET de "+url+ports[numServer]);
-		//changeServer();
+		changeServer();
 		return response.getBody();
 	}
 	private void changeServer() {
