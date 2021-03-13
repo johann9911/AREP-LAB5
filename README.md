@@ -42,11 +42,6 @@ Obtener un log ingresado
 ![img1](img/arep2.PNG)
 Obtener los 10 ultimos logs
 ![img1](img/arep3.PNG)
-## Documentación
-
-Mirar RoundRobin [Documentacion](https://github.com/johann9911/AREP-LAB5.git/apidocs_r/)
-
-Mirar ServicesLog [Documentacion](https://github.com/johann9911/AREP-LAB5.git/apidocs_s/)
 
 ## Licencia
 Ver licencia en LICENCE.txt para más detalles.
