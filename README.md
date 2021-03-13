@@ -49,4 +49,4 @@ Mirar RoundRobin [Documentacion](https://github.com/johann9911/AREP-LAB5.git/api
 Mirar ServicesLog [Documentacion](https://github.com/johann9911/AREP-LAB5.git/apidocs_s/)
 
 ## Licencia
-Ver licencia en LICENCE.txt para m√°s detalles.
+Ver licencia en LICENCE.txt para m·s detalles.
